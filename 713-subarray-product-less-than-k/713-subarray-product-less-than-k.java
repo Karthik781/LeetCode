@@ -10,7 +10,7 @@ class Solution {
                 prod /= nums[l++];
                 
             }
-            count = count + r - l + 1;
+            count = count + r - l +1;
         }
         return count;
     }
