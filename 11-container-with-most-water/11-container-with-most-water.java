@@ -9,7 +9,6 @@ class Solution {
                  h = Math.min(height[left], height[right]);
                  max = Math.max(max, h * (right - left));
             }
-            
             if(height[left] > height[right] ) right--;
             else left++;
         }
