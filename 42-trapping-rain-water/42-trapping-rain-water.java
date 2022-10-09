@@ -5,13 +5,13 @@ class Solution {
         
         while(l < r){
             if(height[l] < height[r]){
-                maxL = Math.max(maxL, height[l]);
+                if(height[l] > maxL) maxL = height[l];
                 int loc = maxL - height[l];
                 if(loc > 0) water += loc;
                 
                 l++;
             }else{
-                maxR = Math.max(maxR, height[r]);
+                if(height[r] > maxR) maxR = height[r];
                 int loc = maxR - height[r];
                 if(loc > 0) water += loc;
                 
