@@ -27,18 +27,8 @@ class Solution {
             }
          cur = cur.next;
         }
-        while(null != list1){
-            node = new ListNode(list1.val);
-            cur.next = node;
-            cur = cur.next;
-                list1 = list1.next;
-        }
-         while(null != list2){
-            node = new ListNode(list2.val);
-            cur.next = node;
-            cur = cur.next;
-            list2 = list2.next;
-        }
+        if(list1 == null) cur.next = list2;
+        else cur.next = list1;
         return head.next;
     }
 }
