@@ -27,8 +27,7 @@ class Solution {
         if(fast == 1 ) return head;  
         else{
             if(temp2 == null) return head.next;
-            ListNode next = temp2.next.next;
-            temp2.next = next;
+            temp2.next = temp2.next.next;
         }
         return head;
     }
