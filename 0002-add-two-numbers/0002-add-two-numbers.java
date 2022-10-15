@@ -15,27 +15,33 @@ class Solution {
         head = dummy;
         dummy.next = head;
         int carry = 0;
-        while(l1!= null || l2 != null){
-            int sum = 0;
-            if(l1 != null){
-                sum += l1.val;
-                l1 = l1.next;
+        while(l1!= null && l2 != null){
+            int sum = l1.val + l2.val + carry;
+            if(sum > 9){
+                sum = sum%10;
+                carry = 1;
+            }else{
+                carry = 0;
             }
-            if(l2 != null){
-                sum += l2.val;
-                l2 = l2.next;
-            } 
-            sum += carry;
-            
-            carry = sum/10;
-            sum = sum%10;
-        
             ListNode node = new ListNode(sum);
             head.next = node;
             head = head.next;
-          
+            l1 = l1.next; l2 = l2.next;
         }
-
+        if(l2 == null) l2 = l1;
+            while(l2 != null){
+                int sum = l2.val + carry; 
+                if(sum > 9){
+                sum = sum%10;
+                carry = 1;
+            }else{
+                carry = 0;
+            }
+            ListNode node = new ListNode(sum);
+            head.next = node;
+                head = head.next;
+                l2 = l2.next;
+            }
         if(carry > 0){
             ListNode node = new ListNode(carry);
             head.next = node;
