@@ -18,8 +18,7 @@ class Solution {
         Node temp = head;
         Map<Node, Node> map = new HashMap<>();
         while(temp != null){
-            Node n =  new Node(temp.val);
-            map.put(temp, n);
+            map.put(temp,  new Node(temp.val));
             temp = temp.next;
         }
         temp = head;
