@@ -22,7 +22,7 @@ class Solution {
             ++fast;
             temp = temp.next;
         }
-        if(fast - n == 0)  return null;
+        if(fast - n <= 0)  return null;
         if(fast == 1 ) return head;  
         else{
             if(temp2 == null) return head.next;
