@@ -1,5 +1,4 @@
 class Solution {
-    Stack<Character> stack = new Stack<>();
     String str = "";
     List<String> list = new ArrayList<>();
     public List<String> generateParenthesis(int n) {
