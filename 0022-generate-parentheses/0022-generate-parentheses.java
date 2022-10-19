@@ -8,7 +8,6 @@ class Solution {
     private void backtrack(int open, int close, int n){
         if(open == close && close == n){            
             list.add(str);
-            return;
         }
         if(open < n){
             str += '(';
