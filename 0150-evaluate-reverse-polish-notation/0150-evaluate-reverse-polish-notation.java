@@ -23,6 +23,6 @@ class Solution {
                 stack.push(Integer.parseInt(s));
             }
         }
-        return stack.pop();
+        return stack.peek();
     }
 }
