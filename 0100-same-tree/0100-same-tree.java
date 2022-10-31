@@ -15,25 +15,14 @@
  */
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        Deque<TreeNode> que = new LinkedList<>();
-        que.offerLast(p);
-        que.offerLast(q);
+       
+        if(p == null && q == null) return true;
         
-        while(que.size() != 0){
-            TreeNode n1  = que.pollFirst();
-            
-            TreeNode n2  = que.pollFirst();
-            
-            if(n1 == null && n2 == null) continue;
-            
-            if(n1 == null || n2 == null || n1.val != n2.val) return false;
-            
-            que.offerLast(n1.right);
-            que.offerLast(n2.right);
-            que.offerLast(n1.left);
-            que.offerLast(n2.left);
-            
+        if(p == null || q == null) return false;
+        
+        if(p.val == q.val){
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         }
-        return true;
+        return false;
     }
 }
