@@ -15,32 +15,25 @@
  */
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        Stack<TreeNode> st1 = new Stack<>();
-        Stack<TreeNode> st2 = new Stack<>();
-        if(p != null) st1.push(p);
-        if(q != null) st2.push(q);
-
+        Deque<TreeNode> que = new LinkedList<>();
+        que.offerLast(p);
+        que.offerLast(q);
         
-        while(!st1.isEmpty() && !st2.isEmpty()){
-            TreeNode n1 = st1.pop();
-            TreeNode n2 = st2.pop();
-             
-            if(n1.val != n2.val) return false;
+        while(que.size() != 0){
+            TreeNode n1  = que.pollFirst();
             
-            if(n1.right != null ) st1.push(n1.right);
-            if(n2.right != null)  st2.push(n2.right);
-            if(st1.size() != st2.size()) return false;
+            TreeNode n2  = que.pollFirst();
             
-            if(n1.left != null) st1.push(n1.left);
-            if(n2.left != null) st2.push(n2.left);
-            if(st1.size() != st2.size()) return false;
+            if(n1 == null && n2 == null) continue;
+            
+            if(n1 == null || n2 == null || n1.val != n2.val) return false;
+            
+            que.offerLast(n1.right);
+            que.offerLast(n2.right);
+            que.offerLast(n1.left);
+            que.offerLast(n2.left);
+            
         }
-        
-        if(st1.size() != st2.size()) {
-            return false;
-        }
-       
         return true;
-        
     }
 }
