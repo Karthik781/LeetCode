@@ -16,7 +16,6 @@
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         Deque<TreeNode> q = new LinkedList<>();
-        Deque<TreeNode> q2 = new LinkedList<>();
         List<List<Integer>> res = new ArrayList<>();
         
         if(root == null) return new ArrayList<>();
