@@ -18,13 +18,9 @@ class Solution {
                 cur = cur.right;
             else if( p.val < cur.val && q.val < cur.val)
                 cur = cur.left;
-            else if(p.val == cur.val) 
-                return cur;
-            else if(q.val == cur.val)
-                return cur;
             else
-                return cur;
+                break;
         }
-        return null;
+        return cur;
     }
 }
