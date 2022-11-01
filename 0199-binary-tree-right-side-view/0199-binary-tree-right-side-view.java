@@ -15,7 +15,7 @@
  */
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
-             Deque<TreeNode> q = new LinkedList<>();
+        Deque<TreeNode> q = new LinkedList<>();
         List<Integer> res = new ArrayList<>();
         
         if(root == null) return new ArrayList<>();
