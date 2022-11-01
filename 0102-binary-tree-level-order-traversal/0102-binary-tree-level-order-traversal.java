@@ -25,23 +25,20 @@ class Solution {
         
         while(!q.isEmpty()){
             List<Integer> list = new ArrayList<>();
-            while(!q.isEmpty()){
+            int len = q.size();
+            while(len > 0){
                 TreeNode tmp = q.pollFirst();
                 list.add(tmp.val);
-                q2.offerLast(tmp);
+                if(tmp.left != null){
+                    q.offerLast(tmp.left);
+                }
+                if(tmp.right != null){
+                    q.offerLast(tmp.right);
+                }
+                len--;
             }
             res.add(list);
             
-            while(!q2.isEmpty()){
-            TreeNode tmp = q2.pollFirst();
-            if(tmp.left != null){
-                q.offerLast(tmp.left);
-            }
-            if(tmp.right != null){
-                q.offerLast(tmp.right);
-            }
-               
-        }
         }
         
         return res;
