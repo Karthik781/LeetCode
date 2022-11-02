@@ -19,17 +19,16 @@ class Solution {
         return dfs(root, curMax);
        
     }
-    
     private int dfs(TreeNode root, int curMax){
         if(root == null) return 0;
         
-         int goodCount = 0;
+        int goodCount = 0;
         if(root.val >= curMax){
             goodCount = 1;
             curMax = root.val;
         }
-         goodCount += dfs(root.left, curMax);
-         goodCount += dfs(root.right, curMax);
+        goodCount += dfs(root.left, curMax);
+        goodCount += dfs(root.right, curMax);
         
         return goodCount;
     }
