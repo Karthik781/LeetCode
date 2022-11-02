@@ -14,22 +14,20 @@
  * }
  */
 class Solution {
+    int count= 0;
     public int goodNodes(TreeNode root) {
-        int curMax = Integer.MIN_VALUE;
-        return dfs(root, curMax);
-       
+        dfs(root, Integer.MIN_VALUE);
+        return count;
     }
-    private int dfs(TreeNode root, int curMax){
-        if(root == null) return 0;
+    private void dfs(TreeNode root, int curMax){
+        if(root == null) return;
         
-        int goodCount = 0;
         if(root.val >= curMax){
-            goodCount = 1;
+            count ++;
             curMax = root.val;
         }
-        goodCount += dfs(root.left, curMax);
-        goodCount += dfs(root.right, curMax);
-        
-        return goodCount;
+        dfs(root.left, curMax);
+        dfs(root.right, curMax);
+      
     }
 }
