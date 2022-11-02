@@ -14,23 +14,17 @@
  * }
  */
 class Solution {
+    int count = 0;
+    int max = 0;
     public int kthSmallest(TreeNode root, int k) {
-        Deque<TreeNode> q = new LinkedList<>();
-
-        while(root!= null || !q.isEmpty()){
-            if(root!= null){
-                q.offerFirst(root);
-                root = root.left;
-            }else{
-                 root = q.pollFirst();
-                if(--k == 0){
-                    break;
-                  
-                }
-                 root = root.right;
-            }
-            
-        }
-        return root.val;
+        if(root == null) return 0;
+        
+        kthSmallest(root.left, k);
+        
+        if(++count == k)  max = root.val;
+        
+        kthSmallest(root.right, k);
+        
+        return max;
     }
 }
