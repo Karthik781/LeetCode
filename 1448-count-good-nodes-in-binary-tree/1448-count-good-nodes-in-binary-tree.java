@@ -14,18 +14,23 @@
  * }
  */
 class Solution {
-   public int goodNodes(TreeNode root) {
-        return helper(root, -99999);
+    public int goodNodes(TreeNode root) {
+        int curMax = Integer.MIN_VALUE;
+        return dfs(root, curMax);
+       
     }
-
-    public int helper(TreeNode root, int max) {
-        if (root == null) return 0;
-
-        int res = root.val >= max ? 1 : 0;
-
-        res += helper(root.left, Math.max(root.val, max));
-        res += helper(root.right, Math.max(root.val, max));
-
-        return res;
+    
+    private int dfs(TreeNode root, int curMax){
+        if(root == null) return 0;
+        
+         int goodCount = 0;
+        if(root.val >= curMax){
+            goodCount = 1;
+            curMax = root.val;
+        }
+         goodCount += dfs(root.left, curMax);
+         goodCount += dfs(root.right, curMax);
+        
+        return goodCount;
     }
 }
