@@ -4,14 +4,14 @@ class Solution {
  
         if(target > nums[r]) return r + 1;
         if(target < nums[0]) return 0;
-        while(l <= r){
+        while(l < r){
             int mid = (r + l)/2;
             
             if(nums[mid] == target) return mid;
             
             else if(nums[mid] > target){
                 
-                r = mid -1;
+                r = mid ;
             }else{
                 l = mid + 1;
             }
