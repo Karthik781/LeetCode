@@ -26,7 +26,6 @@ class Solution {
             TreeNode tmp = node.left;
             node.left = node.right;
             node.right = tmp;
-            
             if(node.left != null){
                 q.offer(node.left);
             }
