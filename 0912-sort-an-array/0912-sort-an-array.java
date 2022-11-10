@@ -1,35 +1,33 @@
 class Solution {
     public int[] sortArray(int[] nums) {
-    	QuickSort(nums, 0, nums.length - 1);
-    	int result[] = new int[nums.length]; 
-        for (int i = 0; i < nums.length; i++) {
-        	result[i] = nums[i];
+        QS(nums, 0 , nums.length - 1);
+        return nums;
+    }
+    
+    private static void QS(int[] nums, int s, int e) {
+        if(s>=e) return;
+        int i = partition(nums, s, e);
+        QS(nums, s, i );
+        QS(nums, i + 1, e);
+    }
+    
+    private static int partition(int[] nums, int l, int r){
+        int pivot = nums[l];
+        
+        while(l < r){
+            while( l < r && nums[r] >= pivot) r--;
+            swap(nums, l, r);
+            while( l < r && nums[l] <= pivot) l++;
+            swap(nums, r, l);
+           
         }
-        return result;
+        nums[l] = pivot;
+        return l;
     }
     
-    public static void QuickSort(int nums[], int lhs, int rhs) {
-    	if(lhs >= rhs) return; 
-		int mid = Partition(nums, lhs, rhs);
-		QuickSort(nums, lhs, mid);
-		QuickSort(nums, mid + 1, rhs);
-    }
-    
-    public static void Swap(int[] nums, int lhs, int rhs) {
-    	int temp = nums[lhs];
-    	nums[lhs] = nums[rhs]; 
-    	nums[rhs] = temp;
-    }
-    
-    public static int Partition(int[] nums, int lhs, int rhs) {
-    	int pivot = nums[lhs];
-    	while(lhs < rhs) {
-            while (lhs < rhs && nums[rhs] >= pivot) rhs--;
-            Swap(nums, lhs, rhs);
-            while (lhs < rhs && nums[lhs] <= pivot) lhs++;
-            Swap(nums, rhs, lhs);
-    	}
-    	nums[lhs] = pivot;
-    	return lhs;
+    private static void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
