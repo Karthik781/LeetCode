@@ -13,6 +13,7 @@ class Solution {
         }
         return islands;
     }
+    
     private void dfs(int i, int j, char[][] grid){
         if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0')
             return;
