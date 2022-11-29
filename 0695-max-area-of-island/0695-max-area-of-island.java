@@ -18,7 +18,6 @@ class Solution {
             return 0;
         }
         grid[i][j] = 0;
-        
         return 1 + dfs(i, j - 1, grid) + dfs(i - 1, j, grid) + dfs(i, j + 1, grid) + dfs(i+1, j, grid);
     }
 }
